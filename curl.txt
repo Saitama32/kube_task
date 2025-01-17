@@ -1,0 +1,2 @@
+curl http://192.168.50.44:31111
+<html><head><title>Directory listing</title></head><body><h1>Directory listing for /app</h1><ul><li>obito.jpg</li><li>web_server.py</li></ul><div style="margin-top:20px;"><img src="obito.jpg" alt="Special Image" style="max-width:1000px; max-height:1000px;"></div></body></html

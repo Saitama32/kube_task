@@ -1,0 +1,40 @@
+kubectl describe deployment web
+Name:                   web
+Namespace:              default
+CreationTimestamp:      Fri, 10 Jan 2025 03:52:46 -0800
+Labels:                 app=web
+Annotations:            deployment.kubernetes.io/revision: 2
+Selector:               app=web
+Replicas:               3 desired | 3 updated | 3 total | 3 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:  app=web
+  Containers:
+   web-container:
+    Image:         saitama700/kube-stress:1.0.0
+    Port:          8000/TCP
+    Host Port:     0/TCP
+    Liveness:      http-get http://:8000/ delay=3s timeout=1s period=3s #success=1 #failure=3
+    Environment:   <none>
+    Mounts:        <none>
+  Volumes:         <none>
+  Node-Selectors:  <none>
+  Tolerations:     <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+  Progressing    True    NewReplicaSetAvailable
+OldReplicaSets:  web-8558b69556 (0/0 replicas created)
+NewReplicaSet:   web-67f54cf448 (3/3 replicas created)
+Events:
+  Type    Reason             Age   From                   Message
+  ----    ------             ----  ----                   -------
+  Normal  ScalingReplicaSet  23m   deployment-controller  Scaled up replica set web-67f54cf448 to 1
+  Normal  ScalingReplicaSet  22m   deployment-controller  Scaled down replica set web-8558b69556 to 2 from 3
+  Normal  ScalingReplicaSet  22m   deployment-controller  Scaled up replica set web-67f54cf448 to 2 from 1
+  Normal  ScalingReplicaSet  21m   deployment-controller  Scaled down replica set web-8558b69556 to 1 from 2
+  Normal  ScalingReplicaSet  21m   deployment-controller  Scaled up replica set web-67f54cf448 to 3 from 2
+  Normal  ScalingReplicaSet  21m   deployment-controller  Scaled down replica set web-8558b69556 to 0 from 1
